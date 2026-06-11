@@ -263,8 +263,11 @@ p {
 
 .living-map {
   position: relative;
-  min-height: min(70vw, 650px);
-  border-radius: 50%;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  min-height: auto;
+  border-radius: 50%;  
   background:
     radial-gradient(circle at center, rgba(76, 244, 210, 0.16), transparent 28%),
     radial-gradient(circle at center, transparent 0 35%, rgba(125, 255, 152, 0.12) 36% 37%, transparent 38% 52%, rgba(255, 209, 102, 0.1) 53% 54%, transparent 55%);
