@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rede Viva: uma experiência interativa sobre IoT, cooperação automática e agricultura do futuro.">
+  <title>Rede Viva | IoT e a Agricultura do Futuro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header" id="topo">
+    <nav class="topbar" aria-label="Navegação principal">
+      <a class="brand" href="#topo" aria-label="Rede Viva, voltar ao início">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>REDE VIVA</span>
+      </a>
+      <div class="nav-links">
+        <a href="#rede">Rede inteligente</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#sem-rede">Sem a rede</a>
+        <a href="#equilibrio">Equilíbrio</a>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div class="hero-copy">
+        <p class="eyebrow">IoT e a Agricultura do Futuro</p>
+        <h1 id="titulo-principal" class="hero-title">
+          <span>REDE</span>
+          <span>VIVA</span>
+        </h1>
+        <p class="slogan">Quando o campo aprende a conversar.</p>
+        <p class="intro">
+          Uma propriedade rural deixa de ser um conjunto de partes isoladas e passa a agir como um organismo:
+          solo, água, energia, cultivo, preservação e máquinas trocam sinais para decidir juntos.
+        </p>
+        <a class="primary-action" href="#rede">Entrar na rede</a>
+      </div>
+
+      <div class="living-map" aria-hidden="true">
+        <span class="map-node node-a"></span>
+        <span class="map-node node-b"></span>
+        <span class="map-node node-c"></span>
+        <span class="map-node node-d"></span>
+        <span class="map-line line-a"></span>
+        <span class="map-line line-b"></span>
+        <span class="map-line line-c"></span>
+        <span class="map-line line-d"></span>
+      </div>
+    </section>
+  </header>
+
+  <main id="conteudo">
+    <section class="network-section" id="rede" aria-labelledby="rede-titulo">
+      <div class="section-heading">
+        <p class="eyebrow">Experiência principal</p>
+        <h2 id="rede-titulo">REDE INTELIGENTE RURAL</h2>
+        <p>
+          Escolha um acontecimento. Em vez de mostrar números, a rede mostra cooperação:
+          cada módulo recebe sinais, responde e altera o comportamento coletivo da propriedade.
+        </p>
+      </div>
+
+      <div class="experience-shell">
+        <aside class="event-rail" aria-labelledby="eventos-titulo">
+          <h3 id="eventos-titulo">Provocar evento</h3>
+          <div class="event-grid" id="eventGrid"></div>
+        </aside>
+
+        <section class="network-stage" aria-label="Mapa interativo da Rede Viva">
+          <div class="stage-topline">
+            <div>
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span id="networkState">Rede em escuta distribuída</span>
+            </div>
+            <button class="ghost-button" id="resetNetwork" type="button">Reiniciar</button>
+          </div>
+
+          <div class="network-canvas" id="networkCanvas">
+            <svg class="connection-layer" id="connectionLayer" aria-hidden="true"></svg>
+            <div class="signal-layer" id="signalLayer" aria-hidden="true"></div>
+            <div class="node-layer" id="nodeLayer"></div>
+            <div class="network-core" aria-hidden="true">
+              <span>REDE</span>
+              <strong>VIVA</strong>
+            </div>
+          </div>
+        </section>
+
+        <aside class="response-panel" aria-labelledby="respostas-titulo">
+          <h3 id="respostas-titulo">Conversas da propriedade</h3>
+          <div class="active-event" id="activeEvent">Nenhum evento ativado ainda.</div>
+          <ol class="dialogue-list" id="dialogueList" aria-live="polite"></ol>
+          <div class="consequence" id="consequence">
+            A rede permanece pronta para redistribuir decisões quando algo muda no campo.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="simulator-section" id="simulador" aria-labelledby="simulador-titulo">
+      <div class="section-heading">
+        <p class="eyebrow">Simulador</p>
+        <h2 id="simulador-titulo">SIMULADOR IOT DA REDE VIVA</h2>
+        <p>
+          Dispare um evento físico e escolha um modo de automação. Sensores, gateways, atuadores e setores
+          trocam mensagens para formar uma decisão coletiva sem depender de um comando humano central.
+        </p>
+      </div>
+
+      <div class="simulator-shell">
+        <aside class="simulator-controls" aria-labelledby="simulador-controles">
+          <h3 id="simulador-controles">Criar cenário</h3>
+
+          <div class="control-group">
+            <p class="control-label">Evento físico</p>
+            <div class="choice-grid" id="simEventChoices"></div>
+          </div>
+
+          <div class="control-group">
+            <p class="control-label">Modo de automação</p>
+            <div class="choice-grid compact-choices" id="simPriorityChoices"></div>
+          </div>
+
+          <button class="sim-run" id="runSimulation" type="button">Disparar protocolo IoT</button>
+        </aside>
+
+        <section class="simulator-field" aria-label="Simulação visual da propriedade">
+          <div class="field-status">
+            <span id="simStatus">Aguardando cenário</span>
+            <strong id="simScore">Equilíbrio inicial</strong>
+          </div>
+
+          <div class="field-map" id="fieldMap">
+            <div class="field-zone zone-water" data-zone="agua">
+              <span>Água</span>
+            </div>
+            <div class="field-zone zone-crop" data-zone="cultivo">
+              <span>Cultivo</span>
+            </div>
+            <div class="field-zone zone-energy" data-zone="energia">
+              <span>Energia</span>
+            </div>
+            <div class="field-zone zone-green" data-zone="biodiversidade">
+              <span>Biodiversidade</span>
+            </div>
+            <div class="field-zone zone-machines" data-zone="maquinas">
+              <span>Máquinas</span>
+            </div>
+            <div class="field-zone zone-preserve" data-zone="preservacao">
+              <span>Preservação</span>
+            </div>
+            <span class="field-core" aria-hidden="true">REDE<br>VIVA</span>
+            <span class="iot-device device-sensor" aria-hidden="true">Sensor</span>
+            <span class="iot-device device-gateway" aria-hidden="true">Gateway</span>
+            <span class="iot-device device-actuator" aria-hidden="true">Atuador</span>
+            <span class="iot-device device-edge" aria-hidden="true">Edge</span>
+            <div class="field-flow flow-a" aria-hidden="true"></div>
+            <div class="field-flow flow-b" aria-hidden="true"></div>
+            <div class="field-flow flow-c" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <aside class="simulator-output" aria-labelledby="simulador-saida">
+          <h3 id="simulador-saida">Barramento IoT</h3>
+          <div class="sim-summary" id="simSummary" aria-live="polite">
+            Escolha um cenário e dispare o protocolo para ver sensores, mensagens e atuadores cooperando.
+          </div>
+          <ol class="sim-steps" id="simSteps"></ol>
+          <div class="sim-effects" id="simEffects"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="comparison-section" id="sem-rede" aria-labelledby="sem-rede-titulo">
+      <div class="section-heading compact">
+        <p class="eyebrow">Seção especial</p>
+        <h2 id="sem-rede-titulo">O que aconteceria sem a rede?</h2>
+        <p>
+          A mesma crise pode virar uma sequência de improvisos ou uma resposta coordenada.
+          Clique para alternar o cenário.
+        </p>
+      </div>
+
+      <div class="comparison-machine">
+        <button class="comparison-trigger" id="comparisonTrigger" type="button" aria-expanded="false">
+          Comparar resposta isolada e integrada
+        </button>
+        <div class="comparison-track" id="comparisonTrack">
+          <article class="scenario isolated" aria-labelledby="isolado-titulo">
+            <span class="scenario-label">Sem comunicação</span>
+            <h3 id="isolado-titulo">Tratamento isolado</h3>
+            <ul>
+              <li>Irrigação reage tarde e gasta mais água.</li>
+              <li>Energia não prioriza sistemas críticos.</li>
+              <li>Máquinas operam sem saber o estado das áreas.</li>
+              <li>Preservação recebe impacto depois do dano.</li>
+            </ul>
+          </article>
+          <article class="scenario integrated" aria-labelledby="integrado-titulo">
+            <span class="scenario-label">Com Rede Viva</span>
+            <h3 id="integrado-titulo">Resolução integrada</h3>
+            <ul>
+              <li>Clima avisa água, irrigação e cultivo ao mesmo tempo.</li>
+              <li>Energia redistribui prioridade para bombas e proteção.</li>
+              <li>Máquinas alteram rotas para reduzir pressão nas áreas frágeis.</li>
+              <li>Preservação acompanha o ciclo inteiro e aciona recuperação.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="balance-section" id="equilibrio" aria-labelledby="equilibrio-titulo">
+      <div class="section-heading compact">
+        <p class="eyebrow">O aprendizado da rede</p>
+        <h2 id="equilibrio-titulo">Produção e natureza no mesmo circuito</h2>
+      </div>
+
+      <div class="balance-grid">
+        <article>
+          <span>01</span>
+          <h3>Produção</h3>
+          <p>O cultivo recebe suporte no momento certo sem depender de decisões desconectadas.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Recursos naturais</h3>
+          <p>Água e energia passam a ser coordenadas, não apenas consumidas.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Biodiversidade</h3>
+          <p>Áreas vivas deixam de ser periferia e entram como participantes da decisão.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Sustentabilidade</h3>
+          <p>A fazenda responde como sistema: menos desperdício, mais cooperação e mais resiliência.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="accessibility-dock" aria-label="Controles de acessibilidade">
+    <button type="button" id="contrastToggle" aria-pressed="false">Alto contraste</button>
+    <button type="button" id="fontIncrease">A+</button>
+    <button type="button" id="fontDecrease">A-</button>
+    <button type="button" id="backToTop">Topo</button>
+  </div>
+
+  <footer class="site-footer">
+    <p>REDE VIVA demonstra IoT como comunicação, automação e cooperação entre sistemas rurais.</p>
+    <div class="footer-copyright" aria-label="Copyright">
+      <p>© 2026 - Todos os direitos reservados</p>
+      <p>Desenvolvido por: Murilo Barreto Santana</p>
+      <p>Curitiba, PR</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
